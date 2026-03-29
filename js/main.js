@@ -46,7 +46,6 @@
 
   // 結算
   const resultScore  = document.getElementById('result-score');
-  const resultTotal  = document.getElementById('result-total');
   const btnPlayAgain = document.getElementById('btn-play-again');
   const btnBackMenu  = document.getElementById('btn-back-menu');
 
@@ -201,7 +200,6 @@
     scoreDisplay.textContent = score || 0;
     // 結算用
     resultScore.textContent = score || 0;
-    resultTotal.textContent = total || 0;
   }
 
   // ═══════════════════════════════════════════════════════
