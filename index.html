@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Math_Point3r — 用手勢回答算數題目的小遊戲" />
+  <title>Math_Point3r</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body>
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║              選單畫面                    ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div id="screen-menu" class="screen active">
+  <h1 class="title">Math_Point3r</h1>
+  <p class="subtitle">手勢辨識算數小遊戲</p>
+
+  <div class="menu-block">
+    <div class="menu-row">
+      <span class="menu-label">遊戲模式</span>
+      <div class="btn-group" id="mode-group">
+        <button class="seg-btn active" data-value="A" id="btn-mode-a">
+          模式 A<br><small>0 ~ 10</small>
+        </button>
+        <button class="seg-btn" data-value="B" id="btn-mode-b">
+          模式 B<br><small>四則運算 10 ~ 99</small>
+        </button>
+      </div>
+    </div>
+
+    <div class="menu-row">
+      <span class="menu-label">時間限制</span>
+      <div class="btn-group" id="time-group">
+        <button class="seg-btn active" data-value="0" id="btn-time-inf">無限制</button>
+        <button class="seg-btn" data-value="60" id="btn-time-60">60 秒</button>
+      </div>
+    </div>
+
+    <div class="menu-row">
+      <span class="menu-label">顯示攝影機</span>
+      <label class="toggle" id="camera-toggle-label">
+        <input type="checkbox" id="camera-toggle" checked />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+        </span>
+        <span class="toggle-text" id="camera-toggle-text">開啟</span>
+      </label>
+    </div>
+  </div>
+
+  <button class="btn-primary" id="btn-start">開始遊戲</button>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║              遊戲畫面                    ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div id="screen-game" class="screen">
+
+  <div id="game-header">
+    <div id="score-box">
+      <span class="info-label">得分</span>
+      <span class="info-value" id="score-display">0</span>
+    </div>
+    <div id="timer-box" class="hidden">
+      <span class="info-label">剩餘</span>
+      <span class="info-value" id="timer-display">60</span>
+    </div>
+    <button class="btn-secondary" id="btn-menu">返回選單</button>
+  </div>
+
+  <div id="game-body">
+    <!-- 左欄：攝影機 -->
+    <div id="camera-col">
+      <video id="camera-video" autoplay playsinline muted></video>
+      <canvas id="capture-canvas" style="display:none;"></canvas>
+      <div id="camera-off-label" class="hidden">攝影機已關閉（仍偵測中）</div>
+    </div>
+
+    <!-- 右欄：題目與辨識 -->
+    <div id="info-col">
+      <div id="question-box">
+        <div class="box-label">題目</div>
+        <div id="question-display">—</div>
+      </div>
+
+      <div id="gesture-box">
+        <div class="box-label">辨識數字</div>
+        <div id="gesture-display">—</div>
+        <div id="hand-detail" class="hand-detail hidden">
+          <span>左手（十位）: <b id="left-hand-val">—</b></span>
+          <span>右手（個位）: <b id="right-hand-val">—</b></span>
+        </div>
+      </div>
+
+      <div id="feedback-box">
+        <div id="feedback-text" class="feedback-idle">舉起手指示意答案</div>
+      </div>
+
+      <div id="ws-status-box">
+        <span id="ws-dot" class="ws-dot disconnected"></span>
+        <span id="ws-label">未連線</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════════════╗ -->
+<!-- ║              結算畫面                    ║ -->
+<!-- ╚══════════════════════════════════════════╝ -->
+<div id="screen-result" class="screen">
+  <h1 class="title">遊戲結束</h1>
+  <div id="result-score-box">
+    <div class="result-label">最終得分</div>
+    <div id="result-score">0</div>
+  </div>
+  <button class="btn-primary" id="btn-play-again">再玩一次</button>
+  <button class="btn-secondary" id="btn-back-menu">返回選單</button>
+</div>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
