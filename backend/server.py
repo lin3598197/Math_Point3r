@@ -252,7 +252,7 @@ class GameSession:
         # 防抖：連續 N 幀辨識一致才算答對
         self._stable_count    = 0
         self._stable_number   = None
-        self.STABLE_THRESHOLD = 4    # 因遠端伺服器算力有限，大幅降低連續一致門檻（從 8 降為 4）
+        self.STABLE_THRESHOLD = 3    # 因遠端伺服器算力有限，大幅降低連續一致門檻（從 8 降為 3）
 
     def _new_question(self) -> dict:
         if self.mode.upper() == "B":
