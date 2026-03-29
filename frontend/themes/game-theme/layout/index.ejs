@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="<%- url_for('/css/style.css') %>" />
 </head>
 <body>
 
@@ -121,6 +121,6 @@
   <button class="btn-secondary" id="btn-back-menu">返回選單</button>
 </div>
 
-<script src="/js/main.js"></script>
+<script src="<%- url_for('/js/main.js') %>"></script>
 </body>
 </html>
