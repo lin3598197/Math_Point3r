@@ -1,0 +1,42 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+
+# Site
+title: Math_Point3r
+subtitle: 手勢辨識算數小遊戲
+description: Use hand gestures to answer math questions
+keywords: math, gestures, mediapipe
+author: Math_Point3r
+language: zh-TW
+timezone: Asia/Taipei
+
+# URL
+url: http://localhost:4000
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Theme
+theme: game-theme
+
+# Deployment
+deploy:
+  type: ''
+
+# Server
+server:
+  port: 4000
+  log: false
+  ip: 0.0.0.0
+  compress: false
+  header: true
