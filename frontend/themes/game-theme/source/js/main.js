@@ -8,7 +8,7 @@
   // ═══════════════════════════════════════════════════════
   //  設定常數
   // ═══════════════════════════════════════════════════════
-  const WS_URL        = 'ws://localhost:8000/ws';
+  const WS_URL        = 'wss://math-point3r.onrender.com';
   const FRAME_INTERVAL = 100;   // ms，每 100ms 傳一幀
   const JPEG_QUALITY   = 0.5;   // canvas toDataURL 壓縮品質
 
