@@ -64,6 +64,7 @@
   let timeRemaining    = 0;
   let gameActive       = false;
   let isProcessingFrame = false; // 防堆積鎖定
+  let lastFrameSentTime = 0;
 
   // ═══════════════════════════════════════════════════════
   //  工具函數：切換畫面
@@ -157,6 +158,7 @@
     }
 
     if (data.type === 'frame_result') {
+      console.log(`📡 真實來回延遲(含後端AI模型運算時間): ${Date.now() - lastFrameSentTime} 毫秒`);
       isProcessingFrame = false; // 解除鎖定
       // 辨識數字
       const num = data.detected_number;
@@ -244,6 +246,7 @@
       ctx.drawImage(cameraVideo, 0, 0, captureCanvas.width, captureCanvas.height);
 
       const b64 = captureCanvas.toDataURL('image/jpeg', 0.3);
+      lastFrameSentTime = Date.now();
       sendJSON({ type: 'frame', data: b64 });
     }, FRAME_INTERVAL);
   }
