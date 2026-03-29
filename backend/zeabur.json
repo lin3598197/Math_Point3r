@@ -1,0 +1,9 @@
+{
+  "build": {
+    "command": "pip install -r requirements.txt"
+  },
+  "start": {
+    "command": "python server.py"
+  },
+  "port": 8000
+}

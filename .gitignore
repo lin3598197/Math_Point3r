@@ -1,0 +1,14 @@
+# Backend Python
+.venv/
+__pycache__/
+*.pyc
+
+# Hexo overrides (if needed)
+frontend/public/
+frontend/db.json
+frontend/node_modules/
+frontend/.deploy_git/
+
+# OS specific
+.DS_Store
+Thumbs.db
