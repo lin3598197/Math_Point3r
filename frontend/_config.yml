@@ -11,8 +11,8 @@ language: zh-TW
 timezone: Asia/Taipei
 
 # URL
-url: http://localhost:4000
-root: /
+url: https://lin3598197.github.io/Math_Point3r
+root: /Math_Point3r/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -31,7 +31,9 @@ theme: game-theme
 
 # Deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/lin3598197/Math_Point3r.git
+  branch: gh-pages
 
 # Server
 server:
