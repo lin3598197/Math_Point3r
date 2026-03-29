@@ -63,6 +63,7 @@
   let countdownTimer   = null;    // setInterval ID
   let timeRemaining    = 0;
   let gameActive       = false;
+  let isProcessingFrame = false; // 防堆積鎖定
 
   // ═══════════════════════════════════════════════════════
   //  工具函數：切換畫面
@@ -156,6 +157,7 @@
     }
 
     if (data.type === 'frame_result') {
+      isProcessingFrame = false; // 解除鎖定
       // 辨識數字
       const num = data.detected_number;
       gestureDisplay.textContent = (num !== null && num !== undefined) ? num : '—';
@@ -233,12 +235,15 @@
     frameTimer = setInterval(() => {
       if (!ws || ws.readyState !== WebSocket.OPEN) return;
       if (!cameraVideo.videoWidth) return;
+      if (isProcessingFrame) return; // 沒處理完不要送新圖
 
-      captureCanvas.width  = cameraVideo.videoWidth;
-      captureCanvas.height = cameraVideo.videoHeight;
-      ctx.drawImage(cameraVideo, 0, 0);
+      isProcessingFrame = true;
+      const scale = 0.5; // 降低解度
+      captureCanvas.width  = cameraVideo.videoWidth * scale;
+      captureCanvas.height = cameraVideo.videoHeight * scale;
+      ctx.drawImage(cameraVideo, 0, 0, captureCanvas.width, captureCanvas.height);
 
-      const b64 = captureCanvas.toDataURL('image/jpeg', JPEG_QUALITY);
+      const b64 = captureCanvas.toDataURL('image/jpeg', 0.3);
       sendJSON({ type: 'frame', data: b64 });
     }, FRAME_INTERVAL);
   }
