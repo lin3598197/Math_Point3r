@@ -1,7 +1,4 @@
-/**
- * Math_Point3r — 前端主邏輯
- * 負責：選單設定 → WebSocket 連線 → WebRTC 串流 → UI 更新
- */
+// main.js - 遊戲前端邏輯
 (function () {
   'use strict';
 
@@ -9,8 +6,8 @@
   //  設定常數
   // ═══════════════════════════════════════════════════════
   const WS_URL        = 'wss://atom-requested-deborah-workshop.trycloudflare.com/ws';
-  const FRAME_INTERVAL = 100;   // ms，每 100ms 傳一幀
-  const JPEG_QUALITY   = 0.5;   // canvas toDataURL 壓縮品質
+  const FRAME_INTERVAL = 100;   
+  const JPEG_QUALITY   = 0.5;   
 
   // ═══════════════════════════════════════════════════════
   //  DOM 元素

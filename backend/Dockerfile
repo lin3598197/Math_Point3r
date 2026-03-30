@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11
 
 # 安裝 MediaPipe 必須的系統 C++ 函式庫與 OpenGL 依賴
 RUN apt-get update && apt-get install -y \

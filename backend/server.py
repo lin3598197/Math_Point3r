@@ -18,10 +18,10 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 
 # ─────────────────────────────────────────────
-#  Logging
+#  Logging-載入
 # ─────────────────────────────────────────────
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("math_pointer")
+logging.basicConfig(level=logging.INFO) 
+logger = logging.getLogger("math_pointer") 
 
 # ─────────────────────────────────────────────
 #  FastAPI App
@@ -74,7 +74,7 @@ def count_fingers(hand_landmarks, handedness_label: str) -> int:
     """
     計算一隻手伸出的手指數 (0~5)。
     hand_landmarks: mediapipe NormalizedLandmarkList
-    handedness_label: 'Left' 或 'Right'（MediaPipe 回傳的手性，是鏡像視角的）
+    handedness_label: 'Left' 或 'Right'(MediaPipe 回傳的手性，是鏡像視角的）
     """
     lm = hand_landmarks
 
@@ -203,8 +203,8 @@ OPERATORS = {
 
 
 def generate_question_mode_a() -> dict:
-    """模式 A：answer ∈ [0, 10]"""
-    answer = random.randint(0, 10)
+    """模式 A：answer ∈ [0, 9]"""
+    answer = random.randint(0, 9)
     # 簡單加減法
     a = random.randint(0, answer)
     b = answer - a
@@ -252,7 +252,7 @@ class GameSession:
         # 防抖：連續 N 幀辨識一致才算答對
         self._stable_count    = 0
         self._stable_number   = None
-        self.STABLE_THRESHOLD = 3    # 因遠端伺服器算力有限，大幅降低連續一致門檻（從 8 降為 3）
+        self.STABLE_THRESHOLD = 3    #連續3幀辨識一致才算答對
 
     def _new_question(self) -> dict:
         if self.mode.upper() == "B":

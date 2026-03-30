@@ -22,3 +22,4 @@ try:
 
 except Exception as e:
     print("Error:", e)
+#This is a sample for testing mediapipe
